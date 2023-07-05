@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6i6tv48jog1"]
+
+[ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
+[ext_resource type="PackedScene" uid="uid://bo4jxksgqttb8" path="res://scenes/tests/movement/player.tscn" id="1_ob6sa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
+bg_color = Color(0.815686, 0.505882, 0.466667, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.756863, 0.321569, 0.203922, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_chspm")
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="player" parent="world" instance=ExtResource("1_ob6sa")]
+position = Vector2(374, 199)
+
+[node name="Panel" type="Panel" parent="world"]
+custom_minimum_size = Vector2(1024, 600)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4hj4j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="world"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world/StaticBody2D"]
+polygon = PackedVector2Array(-81, 640, -94, 407, -44, 56, 30, 56, 66, 253, 56, 411, 35, 484, 43, 545, 73, 544, 85, 468, 82, 328, 111, 232, 184, 160, 245, 214, 298, 363, 281, 486, 291, 538, 748, 534, 742, 420, 856, 259, 1089, 250, 1096, 633, -28, 638)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 300)
