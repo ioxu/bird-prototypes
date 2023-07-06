@@ -8,6 +8,8 @@ font_size = 40
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnyds"]
 
 [node name="player" type="CharacterBody2D"]
+floor_block_on_wall = false
+floor_snap_length = 5.0
 script = ExtResource("1_803db")
 
 [node name="Label" type="Label" parent="."]
@@ -20,6 +22,13 @@ text = "^"
 label_settings = SubResource("LabelSettings_4plgp")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="contact_surface_label" type="Label" parent="."]
+self_modulate = Color(0.831373, 0.317647, 0.607843, 1)
+offset_left = -19.0
+offset_top = -29.0
+offset_right = 21.0
+offset_bottom = -6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cnyds")

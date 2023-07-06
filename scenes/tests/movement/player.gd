@@ -15,9 +15,10 @@ var last_position : Vector2
 func _ready() -> void: 
 	last_position = self.position
 
+
 func _physics_process(delta) -> void:
 	# flap
-	if Input.is_action_just_pressed("ui_accept") :# and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up") :# and is_on_floor():
 		velocity.y = jump_force
 
 	# lateral movement
@@ -40,9 +41,27 @@ func _physics_process(delta) -> void:
 	#rotate( direction.angle() )
 	self.set_rotation( direction.angle() )
 
-	# gravity
-	if not is_on_floor():
+	# gravity if in air, otherwise, stick
+	if is_on_floor() or is_on_ceiling() or is_on_wall():
+		if is_on_ceiling(): $contact_surface_label.text = "ceiling"
+		if is_on_wall(): $contact_surface_label.text = "wall"
+		if is_on_floor(): $contact_surface_label.text = "floor"
+		self_modulate = Color.RED
+		velocity.y = 0.0
+	else:
+		$contact_surface_label.text = ""
 		velocity.y += gravity * delta
+		self_modulate = Color.WHITE
+
+#	if not is_on_floor() or not is_on_ceiling() or not is_on_wall():
+#		velocity.y += gravity * delta
+#		modulate = Color.WHITE
+#	else:
+#		if is_on_ceiling(): print("ceiling")
+#		if is_on_wall(): print("wall")
+#		if is_on_floor(): print("floor")
+#		modulate = Color.RED
+#		velocity.y = 0.0
 
 
 func _process(delta) -> void:
@@ -50,7 +69,7 @@ func _process(delta) -> void:
 
 
 func _draw() -> void:
-	self.draw_line(Vector2.ZERO, direction * 5, Color(0.87058824300766, 0.21568627655506, 0.50980395078659, 0.43137255311012), 3, true )
+	self.draw_line(Vector2.ZERO, direction.rotated( -self.rotation ) * 5, Color(0.87058824300766, 0.21568627655506, 0.50980395078659, 0.43137255311012), 3, true )
 
 
 
