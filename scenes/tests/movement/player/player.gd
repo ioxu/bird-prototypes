@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 #var velocity : Vector2
 var speed = 1600.0
 var max_lateral_speed = 600.0
@@ -19,8 +19,11 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	# flap
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_up") :# and is_on_floor():
-		velocity.y = jump_force
-
+		if not is_on_ceiling():
+			velocity.y = jump_force
+		else:
+			velocity.y = -jump_force
+			
 	# lateral movement
 	var lateral_input = speed*  Input.get_axis("ui_left", "ui_right")
 
@@ -46,12 +49,12 @@ func _physics_process(delta) -> void:
 		if is_on_ceiling(): $contact_surface_label.text = "ceiling"
 		if is_on_wall(): $contact_surface_label.text = "wall"
 		if is_on_floor(): $contact_surface_label.text = "floor"
-		self_modulate = Color.RED
+		$Label.modulate = Color.RED
 		velocity.y = 0.0
 	else:
 		$contact_surface_label.text = ""
 		velocity.y += gravity * delta
-		self_modulate = Color.WHITE
+		$Label.modulate = Color.WHITE
 
 #	if not is_on_floor() or not is_on_ceiling() or not is_on_wall():
 #		velocity.y += gravity * delta

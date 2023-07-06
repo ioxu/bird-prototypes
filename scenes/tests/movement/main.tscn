@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6i6tv48jog1"]
+[gd_scene load_steps=7 format=3 uid="uid://bo1jhelii2lma"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
-[ext_resource type="PackedScene" uid="uid://bo4jxksgqttb8" path="res://scenes/tests/movement/player.tscn" id="1_ob6sa"]
+[ext_resource type="PackedScene" uid="uid://b3nurtq4dwi76" path="res://scenes/tests/movement/player/player.tscn" id="1_ob6sa"]
+[ext_resource type="PackedScene" uid="uid://bv02oue0ok3qi" path="res://scenes/tests/movement/bugs/bug.tscn" id="3_3nvxl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
 bg_color = Color(0.815686, 0.505882, 0.466667, 0)
@@ -14,6 +15,12 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_200mv"]
+size = Vector2(1035, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iih1l"]
+size = Vector2(20, 612)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_chspm")
@@ -35,9 +42,83 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4hj4j")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="world"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world/StaticBody2D"]
 polygon = PackedVector2Array(-81, 640, -94, 407, -44, 56, 30, 56, 66, 253, 56, 411, 35, 484, 43, 545, 73, 544, 85, 468, 82, 328, 111, 232, 184, 160, 245, 214, 298, 363, 281, 486, 291, 538, 748, 534, 742, 420, 856, 259, 1089, 250, 1096, 633, -28, 638)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D"]
+position = Vector2(509, -3)
+shape = SubResource("RectangleShape2D_200mv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="world/StaticBody2D"]
+position = Vector2(0, 296)
+shape = SubResource("RectangleShape2D_iih1l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="world/StaticBody2D"]
+position = Vector2(1025, 296)
+shape = SubResource("RectangleShape2D_iih1l")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 300)
+
+[node name="bug" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(683, 119)
+
+[node name="bug2" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(353, 375)
+
+[node name="bug3" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(241, 94)
+
+[node name="bug4" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(700, 247)
+
+[node name="bug5" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(606, 403)
+
+[node name="bug6" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(784, 66)
+
+[node name="bug7" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(454, 322)
+
+[node name="bug8" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(342, 41)
+
+[node name="bug9" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(801, 194)
+
+[node name="bug10" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(707, 350)
+
+[node name="bug11" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(648, 183)
+
+[node name="bug12" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(318, 439)
+
+[node name="bug13" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(206, 158)
+
+[node name="bug14" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(665, 311)
+
+[node name="bug15" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(571, 467)
+
+[node name="bug16" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(734, 114)
+
+[node name="bug17" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(404, 370)
+
+[node name="bug18" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(292, 89)
+
+[node name="bug19" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(751, 242)
+
+[node name="bug20" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(657, 398)
