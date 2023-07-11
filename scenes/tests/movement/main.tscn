@@ -108,6 +108,9 @@ position = Vector2(665, 311)
 [node name="bug15" parent="." instance=ExtResource("3_3nvxl")]
 position = Vector2(571, 467)
 
+[node name="bug21" parent="." instance=ExtResource("3_3nvxl")]
+position = Vector2(839, 406)
+
 [node name="bug16" parent="." instance=ExtResource("3_3nvxl")]
 position = Vector2(734, 114)
 
