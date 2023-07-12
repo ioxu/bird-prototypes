@@ -15,6 +15,9 @@ var random_id : float
 
 var max_speed := 60.0
 
+#
+var food_value := 5.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

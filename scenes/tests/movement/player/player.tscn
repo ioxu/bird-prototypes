@@ -44,4 +44,13 @@ collision_mask = 4
 position = Vector2(14, 0)
 shape = SubResource("CircleShape2D_mbddx")
 
+[node name="Label" type="Label" parent="mouth_area"]
+offset_left = 8.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+text = "<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="mouth_area" to="." method="_on_mouth_area_body_entered"]

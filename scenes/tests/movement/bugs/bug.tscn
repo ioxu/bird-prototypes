@@ -8,7 +8,7 @@ font_size = 15
 [sub_resource type="CircleShape2D" id="CircleShape2D_swsbt"]
 radius = 7.0
 
-[node name="bug" type="RigidBody2D"]
+[node name="bug" type="RigidBody2D" groups=["bugs"]]
 collision_layer = 4
 collision_mask = 7
 gravity_scale = 0.25

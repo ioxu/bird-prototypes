@@ -9,6 +9,10 @@ var jump_force = -250.0
 var direction : Vector2
 var last_position : Vector2
 
+# 
+var energy := 25.0 : set = _set_energy
+signal energy_changed( new_value )
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -23,7 +27,8 @@ func _physics_process(delta) -> void:
 			velocity.y = jump_force
 		else:
 			velocity.y = -jump_force
-			
+		energy -= 1.5
+		
 	# lateral movement
 	var lateral_input = speed*  Input.get_axis("ui_left", "ui_right")
 
@@ -56,19 +61,15 @@ func _physics_process(delta) -> void:
 		velocity.y += gravity * delta
 		$Label.modulate = Color.WHITE
 
-#	if not is_on_floor() or not is_on_ceiling() or not is_on_wall():
-#		velocity.y += gravity * delta
-#		modulate = Color.WHITE
-#	else:
-#		if is_on_ceiling(): print("ceiling")
-#		if is_on_wall(): print("wall")
-#		if is_on_floor(): print("floor")
-#		modulate = Color.RED
-#		velocity.y = 0.0
-
 
 func _process(delta) -> void:
 	queue_redraw()
+
+
+func _set_energy( new_value ) -> void:
+	if new_value != energy:
+		energy = new_value 
+		emit_signal( "energy_changed", self.energy )
 
 
 func _draw() -> void:
@@ -78,4 +79,5 @@ func _draw() -> void:
 func _on_mouth_area_body_entered(body):
 	if body is Bug:
 		print("player: area_body_entered %s"%body)
+		self.energy += body.food_value
 		body.queue_free()

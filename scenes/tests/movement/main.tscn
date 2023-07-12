@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo1jhelii2lma"]
+[gd_scene load_steps=8 format=3 uid="uid://bo1jhelii2lma"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
 [ext_resource type="PackedScene" uid="uid://b3nurtq4dwi76" path="res://scenes/tests/movement/player/player.tscn" id="1_ob6sa"]
 [ext_resource type="PackedScene" uid="uid://bv02oue0ok3qi" path="res://scenes/tests/movement/bugs/bug.tscn" id="3_3nvxl"]
+[ext_resource type="Script" path="res://scenes/tests/movement/player_ui.gd" id="4_64ar2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
 bg_color = Color(0.815686, 0.505882, 0.466667, 0)
@@ -60,68 +61,86 @@ shape = SubResource("RectangleShape2D_iih1l")
 position = Vector2(1025, 296)
 shape = SubResource("RectangleShape2D_iih1l")
 
+[node name="bug" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(683, 119)
+
+[node name="bug2" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(353, 375)
+
+[node name="bug3" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(241, 94)
+
+[node name="bug4" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(700, 247)
+
+[node name="bug5" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(606, 403)
+
+[node name="bug6" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(784, 66)
+
+[node name="bug7" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(454, 322)
+
+[node name="bug8" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(342, 41)
+
+[node name="bug9" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(801, 194)
+
+[node name="bug10" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(707, 350)
+
+[node name="bug11" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(648, 183)
+
+[node name="bug12" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(318, 439)
+
+[node name="bug13" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(206, 158)
+
+[node name="bug14" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(665, 311)
+
+[node name="bug15" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(571, 467)
+
+[node name="bug21" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(839, 406)
+
+[node name="bug16" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(734, 114)
+
+[node name="bug17" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(404, 370)
+
+[node name="bug18" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(292, 89)
+
+[node name="bug19" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(751, 242)
+
+[node name="bug20" parent="world" instance=ExtResource("3_3nvxl")]
+position = Vector2(657, 398)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(512, 300)
 
-[node name="bug" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(683, 119)
+[node name="player_ui" type="Node2D" parent="."]
+position = Vector2(810, 29)
+script = ExtResource("4_64ar2")
 
-[node name="bug2" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(353, 375)
+[node name="Control" type="Control" parent="player_ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 190.0
+offset_bottom = 133.0
 
-[node name="bug3" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(241, 94)
-
-[node name="bug4" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(700, 247)
-
-[node name="bug5" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(606, 403)
-
-[node name="bug6" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(784, 66)
-
-[node name="bug7" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(454, 322)
-
-[node name="bug8" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(342, 41)
-
-[node name="bug9" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(801, 194)
-
-[node name="bug10" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(707, 350)
-
-[node name="bug11" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(648, 183)
-
-[node name="bug12" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(318, 439)
-
-[node name="bug13" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(206, 158)
-
-[node name="bug14" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(665, 311)
-
-[node name="bug15" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(571, 467)
-
-[node name="bug21" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(839, 406)
-
-[node name="bug16" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(734, 114)
-
-[node name="bug17" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(404, 370)
-
-[node name="bug18" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(292, 89)
-
-[node name="bug19" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(751, 242)
-
-[node name="bug20" parent="." instance=ExtResource("3_3nvxl")]
-position = Vector2(657, 398)
+[node name="player_energy_bar" type="ProgressBar" parent="player_ui/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+show_percentage = false
