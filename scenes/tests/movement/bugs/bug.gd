@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Bug
+
 @onready var fnl := FastNoiseLite.new()
 
 var age = 0.0 
@@ -44,7 +46,7 @@ func _draw()-> void:
 	self.draw_line(Vector2.ZERO, noise_force.rotated( -self.rotation ) * 5, Color(0.87058824300766, 0.21568627655506, 0.50980395078659, 0.43137255311012), 3, true )
 
 
-func _on_body_entered(body):
-	if body is Player:
-		print("%s on_body_entered %s"%[self, body])
-		queue_free()
+#func _on_body_entered(body):
+#	if body is Player:
+#		print("%s on_body_entered %s"%[self, body])
+#		queue_free()

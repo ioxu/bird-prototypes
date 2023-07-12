@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3nurtq4dwi76"]
+[gd_scene load_steps=5 format=3 uid="uid://b3nurtq4dwi76"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/player/player.gd" id="1_rajkm"]
 
@@ -7,8 +7,11 @@ font_size = 40
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cnyds"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbddx"]
+radius = 6.08276
+
 [node name="player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 2
 floor_block_on_wall = false
 floor_snap_length = 5.0
 script = ExtResource("1_rajkm")
@@ -33,3 +36,12 @@ offset_bottom = -6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cnyds")
+
+[node name="mouth_area" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="mouth_collision_shape" type="CollisionShape2D" parent="mouth_area"]
+position = Vector2(14, 0)
+shape = SubResource("CircleShape2D_mbddx")
+
+[connection signal="body_entered" from="mouth_area" to="." method="_on_mouth_area_body_entered"]

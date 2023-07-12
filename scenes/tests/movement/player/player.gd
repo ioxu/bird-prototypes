@@ -75,14 +75,7 @@ func _draw() -> void:
 	self.draw_line(Vector2.ZERO, direction.rotated( -self.rotation ) * 5, Color(0.87058824300766, 0.21568627655506, 0.50980395078659, 0.43137255311012), 3, true )
 
 
-
-
-
-
-
-
-
-
-
-
-
+func _on_mouth_area_body_entered(body):
+	if body is Bug:
+		print("player: area_body_entered %s"%body)
+		body.queue_free()
