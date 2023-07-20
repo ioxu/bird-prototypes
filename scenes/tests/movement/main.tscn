@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo1jhelii2lma"]
+[gd_scene load_steps=9 format=3 uid="uid://deuwn6afwjxjm"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
 [ext_resource type="PackedScene" uid="uid://b3nurtq4dwi76" path="res://scenes/tests/movement/player/player.tscn" id="1_ob6sa"]
 [ext_resource type="PackedScene" uid="uid://bv02oue0ok3qi" path="res://scenes/tests/movement/bugs/bug.tscn" id="3_3nvxl"]
+[ext_resource type="Script" path="res://scenes/tests/movement/camera.gd" id="4_6luy1"]
 [ext_resource type="Script" path="res://scenes/tests/movement/player_ui.gd" id="4_64ar2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
@@ -124,20 +125,23 @@ position = Vector2(751, 242)
 [node name="bug20" parent="world" instance=ExtResource("3_3nvxl")]
 position = Vector2(657, 398)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tracking_object")]
 position = Vector2(512, 300)
+script = ExtResource("4_6luy1")
+tracking_object = NodePath("../world/player")
 
-[node name="player_ui" type="Node2D" parent="."]
-position = Vector2(810, 29)
+[node name="player_ui" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("player")]
+position = Vector2(298, -271)
 script = ExtResource("4_64ar2")
+player = NodePath("../../world/player")
 
-[node name="Control" type="Control" parent="player_ui"]
+[node name="Control" type="Control" parent="Camera2D/player_ui"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 190.0
 offset_bottom = 133.0
 
-[node name="player_energy_bar" type="ProgressBar" parent="player_ui/Control"]
+[node name="player_energy_bar" type="ProgressBar" parent="Camera2D/player_ui/Control"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

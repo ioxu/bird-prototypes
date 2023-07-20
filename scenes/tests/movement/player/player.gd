@@ -11,6 +11,7 @@ var last_position : Vector2
 
 # 
 var energy := 25.0 : set = _set_energy
+var energy_max := 200.0
 signal energy_changed( new_value )
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -56,6 +57,9 @@ func _physics_process(delta) -> void:
 		if is_on_floor(): $contact_surface_label.text = "floor"
 		$Label.modulate = Color.RED
 		velocity.y = 0.0
+		
+		# regain resting energy
+		energy += 1.0 * delta
 	else:
 		$contact_surface_label.text = ""
 		velocity.y += gravity * delta
