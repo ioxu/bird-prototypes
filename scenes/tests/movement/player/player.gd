@@ -71,6 +71,7 @@ func _process(delta) -> void:
 
 
 func _set_energy( new_value ) -> void:
+	new_value = clamp(new_value, 0, energy_max)
 	if new_value != energy:
 		energy = new_value 
 		emit_signal( "energy_changed", self.energy )

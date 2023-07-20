@@ -10,6 +10,7 @@ func _ready():
 	print("player_ui.player: %s"%player)
 	player.energy_changed.connect( _on_player_energy_changed )
 	player_energy_bar.value = player.energy
+	player_energy_bar.max_value = player.energy_max
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
