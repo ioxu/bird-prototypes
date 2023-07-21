@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://u36px1dde2jo"]
+
+[ext_resource type="Script" path="res://scenes/tests/softclamp/main.gd" id="1_q62dm"]
+[ext_resource type="Texture2D" uid="uid://53tdox2tik0t" path="res://data/textures/dot-01_128.png" id="2_bfxon"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/mouse_pointer.gd" id="3_qnaqi"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/SpringPosition.gd" id="4_lb3cx"]
+[ext_resource type="Texture2D" uid="uid://djhhqcw4cwdmy" path="res://data/textures/ring_500x500.png" id="5_8fe4h"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/SpringPositionLimit.gd" id="6_gd6lh"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_q62dm")
+
+[node name="mouse_pointer" type="Sprite2D" parent="."]
+position = Vector2(-124, -114)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_bfxon")
+script = ExtResource("3_qnaqi")
+
+[node name="SpringPosition" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+self_modulate = Color(0.345098, 0.486275, 0.294118, 0.807843)
+texture = ExtResource("2_bfxon")
+script = ExtResource("4_lb3cx")
+tracking_object = NodePath("../mouse_pointer")
+speed = 2.0
+
+[node name="final_point" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+self_modulate = Color(0.890196, 0.0784314, 0.580392, 0.666667)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_bfxon")
+script = ExtResource("4_lb3cx")
+tracking_object = NodePath("../mouse_pointer")
+spring = 200.0
+damp = 5.0
+speed = 2.0
+
+[node name="final_point2" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+self_modulate = Color(0.878431, 0.439216, 0.027451, 0.666667)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_8fe4h")
+script = ExtResource("4_lb3cx")
+tracking_object = NodePath("../SpringPosition")
+spring = 60.0
+damp = 0.65
+speed = 2.5
+
+[node name="SpringPositionLimit" type="Node2D" parent="."]
+script = ExtResource("6_gd6lh")
+x_inner = 190.968
