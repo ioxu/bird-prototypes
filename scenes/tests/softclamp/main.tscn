@@ -45,4 +45,3 @@ speed = 2.5
 
 [node name="SpringPositionLimit" type="Node2D" parent="."]
 script = ExtResource("6_gd6lh")
-x_inner = 190.968
