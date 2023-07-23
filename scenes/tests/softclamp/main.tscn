@@ -10,11 +10,15 @@
 [node name="main" type="Node2D"]
 script = ExtResource("1_q62dm")
 
-[node name="mouse_pointer" type="Sprite2D" parent="."]
-position = Vector2(-124, -114)
-scale = Vector2(0.1, 0.1)
+[node name="final_point3" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+self_modulate = Color(0.0745098, 0.788235, 0.929412, 0.666667)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_bfxon")
-script = ExtResource("3_qnaqi")
+script = ExtResource("4_lb3cx")
+tracking_object = NodePath("../mouse_pointer")
+spring = 60.0
+damp = 30.0
+speed = 1.0
 
 [node name="SpringPosition" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
 self_modulate = Color(0.345098, 0.486275, 0.294118, 0.807843)
@@ -39,9 +43,20 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_8fe4h")
 script = ExtResource("4_lb3cx")
 tracking_object = NodePath("../SpringPosition")
-spring = 60.0
-damp = 0.65
-speed = 2.5
+spring = 180.0
+damp = 1.0
+speed = 4.5
 
 [node name="SpringPositionLimit" type="Node2D" parent="."]
 script = ExtResource("6_gd6lh")
+
+[node name="mouse_pointer" type="Sprite2D" parent="."]
+position = Vector2(-124, -114)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_bfxon")
+script = ExtResource("3_qnaqi")
+
+[node name="fps_label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps"

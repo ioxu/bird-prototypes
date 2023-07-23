@@ -19,7 +19,7 @@ func _ready():
 
 
 func _draw():
-	draw_line($"../mouse_pointer".global_position, $"../final_point".global_position, Color.GREEN * Color(1, 1, 1, 0.43137255311012), 1.0)
+	#draw_line($"../mouse_pointer".global_position, $"../final_point".global_position, Color.GREEN * Color(1, 1, 1, 0.43137255311012), 1.0)
 
 	# inner
 	draw_dashed_line(Vector2(left, top), Vector2(left, bottom), inner_colour, 3.0, 10.0, false )

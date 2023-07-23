@@ -13,21 +13,20 @@ var displacement : Vector2
 
 func _ready():
 	#displacement = tracking_object.position
-	#self.position = displacement
+	self.position = tracking_object.position
 	pass
 
 
-func _process(delta):
+func _physics_process(delta):
 
 	#https://www.youtube.com/watch?v=YBgCUQVDRkw&ab_channel=MrElipteach
 	var track_pos = tracking_object.global_position
-#	track_pos.x = clamp( track_pos.x, c_limits.left, c_limits.right )
-#	track_pos.y = clamp( track_pos.y, c_limits.top, c_limits.bottom )
 	vel = track_pos - self.global_position
 
 	var force =  -spring * displacement - damp * vel
 	vel += force * delta
-	displacement += ( vel * delta ) * speed
-	
-	self.global_position += displacement
+	displacement +=  vel * delta
+
+
+	self.global_position += (displacement * speed)
 
