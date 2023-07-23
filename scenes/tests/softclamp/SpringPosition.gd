@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 class_name SpringPosition
 
 @export var tracking_object : Node2D
@@ -12,8 +12,6 @@ var displacement : Vector2
 
 
 func _ready():
-	#displacement = tracking_object.position
-	self.position = tracking_object.position
 	pass
 
 

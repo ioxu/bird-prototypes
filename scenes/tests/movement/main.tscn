@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://deuwn6afwjxjm"]
+[gd_scene load_steps=13 format=3 uid="uid://deuwn6afwjxjm"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
 [ext_resource type="PackedScene" uid="uid://b3nurtq4dwi76" path="res://scenes/tests/movement/player/player.tscn" id="1_ob6sa"]
 [ext_resource type="PackedScene" uid="uid://bv02oue0ok3qi" path="res://scenes/tests/movement/bugs/bug.tscn" id="3_3nvxl"]
+[ext_resource type="Texture2D" uid="uid://53tdox2tik0t" path="res://data/textures/dot-01_128.png" id="4_0d3x8"]
 [ext_resource type="Script" path="res://scenes/tests/movement/camera.gd" id="4_6luy1"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/SpringPosition.gd" id="4_53bl1"]
 [ext_resource type="Script" path="res://scenes/tests/movement/player_ui.gd" id="4_64ar2"]
+[ext_resource type="Texture2D" uid="uid://djhhqcw4cwdmy" path="res://data/textures/ring_500x500.png" id="4_qbnbj"]
+[ext_resource type="Script" path="res://scenes/tests/movement/limited_camera_tracker.gd" id="5_ltp4y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
 bg_color = Color(0.815686, 0.505882, 0.466667, 0)
@@ -127,10 +131,30 @@ position = Vector2(751, 242)
 [node name="bug20" parent="world" instance=ExtResource("3_3nvxl")]
 position = Vector2(657, 398)
 
+[node name="limited_camera_tracker" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+texture_filter = 4
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_0d3x8")
+script = ExtResource("5_ltp4y")
+tracking_object = NodePath("../world/player")
+
+[node name="soft_player_tracker" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
+editor_description = "600
+55
+5"
+self_modulate = Color(1, 0.6, 0.0784314, 1)
+texture_filter = 4
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_qbnbj")
+script = ExtResource("4_53bl1")
+tracking_object = NodePath("../limited_camera_tracker")
+spring = 800.0
+damp = 55.0
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tracking_object")]
 position = Vector2(512, 300)
 script = ExtResource("4_6luy1")
-tracking_object = NodePath("../world/player")
+tracking_object = NodePath("../soft_player_tracker")
 
 [node name="player_ui" type="Node2D" parent="Camera2D" node_paths=PackedStringArray("player")]
 position = Vector2(298, -271)
