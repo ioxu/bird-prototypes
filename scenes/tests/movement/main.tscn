@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://deuwn6afwjxjm"]
+[gd_scene load_steps=15 format=3 uid="uid://deuwn6afwjxjm"]
 
 [ext_resource type="Script" path="res://scenes/tests/movement/main.gd" id="1_chspm"]
 [ext_resource type="PackedScene" uid="uid://b3nurtq4dwi76" path="res://scenes/tests/movement/player/player.tscn" id="1_ob6sa"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/tests/movement/player_ui.gd" id="4_64ar2"]
 [ext_resource type="Texture2D" uid="uid://djhhqcw4cwdmy" path="res://data/textures/ring_500x500.png" id="4_qbnbj"]
 [ext_resource type="Script" path="res://scenes/tests/movement/limited_camera_tracker.gd" id="5_ltp4y"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/fps_label.gd" id="10_757pb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj4j"]
 bg_color = Color(0.815686, 0.505882, 0.466667, 0)
@@ -23,10 +24,13 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_200mv"]
-size = Vector2(1035, 20)
+size = Vector2(1035, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg5hy"]
+size = Vector2(26, 1359)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iih1l"]
-size = Vector2(20, 612)
+size = Vector2(38, 1347.25)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_chspm")
@@ -36,7 +40,7 @@ metadata/_edit_vertical_guides_ = [142.0, 877.0]
 [node name="world" type="Node2D" parent="."]
 
 [node name="player" parent="world" instance=ExtResource("1_ob6sa")]
-position = Vector2(374, 199)
+position = Vector2(194, 84)
 
 [node name="Panel" type="Panel" parent="world"]
 custom_minimum_size = Vector2(1024, 600)
@@ -57,15 +61,15 @@ collision_mask = 5
 polygon = PackedVector2Array(-81, 640, -94, 407, -44, 56, 30, 56, 66, 253, 56, 411, 35, 484, 43, 545, 73, 544, 85, 468, 82, 328, 111, 232, 184, 160, 245, 214, 298, 363, 281, 486, 291, 538, 748, 534, 742, 420, 856, 259, 1089, 250, 1096, 633, -28, 638)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D"]
-position = Vector2(509, -3)
+position = Vector2(509, -607)
 shape = SubResource("RectangleShape2D_200mv")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="world/StaticBody2D"]
-position = Vector2(0, 296)
-shape = SubResource("RectangleShape2D_iih1l")
+position = Vector2(-11, 82.5)
+shape = SubResource("RectangleShape2D_tg5hy")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="world/StaticBody2D"]
-position = Vector2(1025, 296)
+position = Vector2(1024, 77.625)
 shape = SubResource("RectangleShape2D_iih1l")
 
 [node name="bug" parent="world" instance=ExtResource("3_3nvxl")]
@@ -133,8 +137,10 @@ position = Vector2(657, 398)
 
 [node name="limited_camera_tracker" type="Sprite2D" parent="." node_paths=PackedStringArray("tracking_object")]
 texture_filter = 4
+position = Vector2(-273, 14)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_0d3x8")
+offset = Vector2(0.000488281, -0.00219727)
 script = ExtResource("5_ltp4y")
 tracking_object = NodePath("../world/player")
 
@@ -161,16 +167,28 @@ position = Vector2(298, -271)
 script = ExtResource("4_64ar2")
 player = NodePath("../../world/player")
 
+[node name="fps_label" type="Label" parent="Camera2D/player_ui"]
+offset_left = -797.0
+offset_top = -15.0
+offset_right = -757.0
+offset_bottom = 11.0
+text = "fps"
+script = ExtResource("10_757pb")
+
 [node name="Control" type="Control" parent="Camera2D/player_ui"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 190.0
-offset_bottom = 133.0
+offset_left = -788.0
+offset_top = -11.0
+offset_right = -598.0
+offset_bottom = 122.0
 
 [node name="player_energy_bar" type="ProgressBar" parent="Camera2D/player_ui/Control"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = 414.0
+offset_right = 414.0
 offset_bottom = 27.0
 grow_horizontal = 2
 show_percentage = false

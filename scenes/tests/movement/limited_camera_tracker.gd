@@ -14,7 +14,7 @@ var margin_horizontal := 350
 
 func _ready():
 	c_limits.left = margin_horizontal
-	c_limits.top = margin_vertical
+	c_limits.top = -500
 	c_limits.right = wsize.x - margin_horizontal
 	c_limits.bottom = wsize.y - margin_vertical
 	print("camera limits: ")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1d6x6166ba2l"]
+[gd_scene load_steps=10 format=3 uid="uid://d1d6x6166ba2l"]
 
 [ext_resource type="Script" path="res://scenes/tests/softclamp/main.gd" id="1_q62dm"]
 [ext_resource type="Texture2D" uid="uid://53tdox2tik0t" path="res://data/textures/dot-01_128.png" id="2_bfxon"]
@@ -7,6 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://djhhqcw4cwdmy" path="res://data/textures/ring_500x500.png" id="5_8fe4h"]
 [ext_resource type="Script" path="res://scenes/tests/softclamp/SpringPositionLimit.gd" id="6_gd6lh"]
 [ext_resource type="Script" path="res://scenes/tests/softclamp/limited_pointer.gd" id="6_n555b"]
+[ext_resource type="Script" path="res://scenes/tests/softclamp/fps_label.gd" id="8_4qsed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cmq8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0705882)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.584314, 0.584314, 0.584314, 0.494118)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_q62dm")
@@ -20,6 +33,20 @@ script = ExtResource("4_lb3cx")
 tracking_object = NodePath("../limited_pointer")
 spring = 600.0
 damp = 55.0
+
+[node name="Panel" type="Panel" parent="final_point3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -864.0
+offset_top = -464.0
+offset_right = 736.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6cmq8")
 
 [node name="SpringPositionLimit" type="Node2D" parent="."]
 script = ExtResource("6_gd6lh")
@@ -49,3 +76,4 @@ script = ExtResource("3_qnaqi")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "fps"
+script = ExtResource("8_4qsed")

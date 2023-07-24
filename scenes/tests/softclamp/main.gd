@@ -16,8 +16,9 @@ func _ready():
 
 
 func _process(delta):
-	$fps_label.text = "%0.2f"%Engine.get_frames_per_second()
-
+	#$fps_label.text = "%0.2f"%Engine.get_frames_per_second()
+	pass
+	
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
